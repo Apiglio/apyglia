@@ -19,7 +19,11 @@ def SaveToFileAsDict(filename,dicts):
 	f=open(filename,"w")
 	fielddefs=list(dicts[0].keys())
 	fieldcount=len(fielddefs)
-	f.write(str(fielddefs).strip("[]")+"\n")
+	#f.write(str(fielddefs).strip("[]")+"\n")
+	stmp=""
+	for fname in fielddefs:
+		stmp+=","+fname
+	f.write(stmp[1:]+"\n")
 	for row in dicts:
 		stmp=""
 		for fn in range(fieldcount):
@@ -27,3 +31,33 @@ def SaveToFileAsDict(filename,dicts):
 		stmp=stmp[1:]+"\n"
 		f.write(stmp)
 	f.close()
+
+
+def SaveToFileAsList(filename,list,fielddefs=[]):
+	f=open(filename,"w")
+	fieldcount=len(fielddefs)
+	#f.write(str(fielddefs).strip("[]")+"\n")
+	stmp=""
+	for fname in fielddefs:
+		stmp+=","+fname
+	f.write(stmp[1:]+"\n")
+	for row in list:
+		stmp=""
+		for fn in range(fieldcount):
+			stmp+=","+str(row[fn])
+		stmp=stmp[1:]+"\n"
+		f.write(stmp)
+	f.close()
+
+
+
+
+
+
+
+
+
+
+
+
+
